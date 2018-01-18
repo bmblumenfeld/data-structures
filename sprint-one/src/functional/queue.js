@@ -17,7 +17,7 @@ var Queue = function() {
   someInstance.dequeue = function() {
     var nextUp = storage[outLine];
     delete storage[outLine];
-    if (line ! == 0) {
+    if (line !== 0) {
       line--;  
     }
     outLine++;
