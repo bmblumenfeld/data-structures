@@ -18,32 +18,24 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
-  if (this.value === target) {
+  if (this.value && this.value === target) {
     return true;
   }
-  var recurseChildren = function(node) {
-    return node.reduce(function (acc, element, index) {
+  var recurseChildren = function(childrenItems) {
+    return childrenItems.reduce(function (acc, element, index) {
       if (element.value === target) {
-        acc = true;
+        return true;
       }
-      if (element.children) {
-        recurseChildren(element.children);
+      if (element.children.length) {
+        if (recurseChildren(element.children) === true) {
+          return true;
+        }
       } 
       return acc;
     }, false);
-    // if (!searThat) {
-    //   recurseChildren();
-    // }
-    
   };
 
-  recurseChildren(this.children);
-  
-  // var inChildren = recurseChildren(this.children);
-  // while (this.children && !inChildren){
-    
-  // } 
-  
+  return recurseChildren(this.children);
 };
 
 
