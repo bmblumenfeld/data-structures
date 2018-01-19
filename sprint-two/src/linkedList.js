@@ -2,27 +2,27 @@ var LinkedList = function() {
   var list = {};
   list.head = null;
   list.tail = null;
-  var isFirst = true;
+  
 
   list.addToTail = function(value) {
-    //initialize a objvar  - call node and pass val given
-    //objvar.next = list current tail
-    //list.tail = obj.var
     var inputTail = Node(value);
-    inputTail.next = list.head;
 
-    list.tail = inputTail;
-
-    if (isFirst) {
+    if (list.tail === null ) {
       list.head = inputTail;
-      isFirst = false; 
+      list.tail = {};
+      list.tail.next = inputTail;
+      list.tail = inputTail;
+      return; 
     }
+
+    list.tail.next = inputTail;
+    list.tail = inputTail;
   };
 
   list.removeHead = function() {
     var removedHead = list.head;
     if (!removedHead.next) {
-      list.head = null;
+      list.head = null; 
     } else {
       list.head = removedHead.next;
     } 
@@ -30,6 +30,14 @@ var LinkedList = function() {
   };
 
   list.contains = function(target) {
+    var currentHead = list.head;
+    while (currentHead) {
+      if (currentHead.value === target) {
+        return true;
+      }
+      currentHead = currentHead.next;
+    }
+    return false; 
   };
 
   return list;
