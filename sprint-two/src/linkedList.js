@@ -15,14 +15,16 @@ var LinkedList = function() {
       return; 
     }
 
-    list.tail.next = inputTail;
-    list.tail = inputTail;
+    list.tail.next = inputTail; // Updates next of both first item in head and first item in tail
+    // list.head.next.next.next.next = inputTail;
+    list.tail = inputTail; // Resets tail to be new value, null
   };
 
   list.removeHead = function() {
     var removedHead = list.head;
     if (!removedHead.next) {
-      list.head = null; 
+      list.head = null;
+      list.tail = null; 
     } else {
       list.head = removedHead.next;
     } 
@@ -55,3 +57,9 @@ var Node = function(value) {
 /*
  * Complexity: What is the time complexity of the above functions?
  */
+
+/*
+addToTail: O(1)
+removeHead: O(1)
+contains: O(n)
+*/
