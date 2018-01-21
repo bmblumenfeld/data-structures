@@ -37,4 +37,18 @@ describe('binarySearchTree', function() {
     binarySearchTree.depthFirstLog(func);
     expect(array).to.eql([5, 2, 3, 7]);
   });
+
+  it('should return a new tree with the outputs of the callbacks executed in order of original callback exectuion'), function() {
+    var array = [];
+    var func = function(value) { array.push(value); };
+    binarySearchTree.insert(6);
+    binarySearchTree.insert(10);
+    binarySearchTree.insert(45);
+    var returnedTree = binarySearchTree.createsOutputTree(func, output);
+    var newTree = BinarySearchTree();
+    newTree.insert(6);
+    newTree.insert(10);
+    newTree.insert(45);
+    expect(returnedTree).to.eql(newTree);
+  };
 });

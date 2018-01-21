@@ -68,4 +68,10 @@ describe('graph', function() {
     expect(graph.hasEdge(3, 5)).to.equal(true);
     expect(graph.hasEdge(5, 5)).to.equal(true);
   });
+
+  it('should throw an error when trying to remove edges that don\'t exist', function() {
+    graph.addNode(7);
+    graph.addNode(10);
+    expect(function() { graph.removeEdge(7, 10); } ).to.throw('you are wrong. Stop what you are doing and never do it again!');
+  });
 });

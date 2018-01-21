@@ -41,4 +41,9 @@ describe('tree', function() {
     expect(tree.contains(8)).to.equal(true);
   });
 
+  it('should be able to create a tree of a single node', function() {
+    tree = Tree(7);
+    expect(tree.value).to.equal(7);
+  });
+
 });
