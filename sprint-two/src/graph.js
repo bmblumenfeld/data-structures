@@ -50,7 +50,7 @@ Graph.prototype.addEdge = function(fromNode, toNode) {
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
   if (!this[fromNode].length) {
-    return;
+    throw new TypeError('you are wrong. Stop what you are doing and never do it again!');
   }
   this[fromNode].forEach(function (connection, index) {
     if (connection === toNode) {
@@ -76,4 +76,12 @@ Graph.prototype.forEachNode = function(cb) {
  * Complexity: What is the time complexity of the above functions?
  */
 
+/*
+addNode: O(1)
+contains: O(1)
+removeNode: O(n^2)
+hasEdge: O(n)
+addEdge: O(1)
+removeEdge: O(2n)
+*/
 
